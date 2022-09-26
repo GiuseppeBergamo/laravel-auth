@@ -63,7 +63,7 @@
             }
         </style>
 
-        <script src="{{ asset('js/front.js') }}"></script>
+        <script defer src="{{ asset('js/front.js') }}"></script>
     </head>
     <body>
         <div class="flex-center position-ref full-height">
