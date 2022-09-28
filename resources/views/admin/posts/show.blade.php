@@ -22,7 +22,13 @@
         <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Torna indietro</a>
     </div>
     <div>
-
+        <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button class="btn btn-danger" type="submit">
+                Elimina
+            </button>
+        </form>
     </div>
 </footer>
 
