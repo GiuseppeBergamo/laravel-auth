@@ -29,7 +29,10 @@
         <td>In lavorazione</td>
         <td>{{ $post->created_at }}</td>
         <td>{{ $post->updated_at }}</td>
-        <td><a class="btn btn-sm btn-success" href="{{ route('admin.posts.show', $post->id) }}">Guarda post</a></td>
+        <td>
+            <a class="btn btn-sm btn-success mr-2" href="{{ route('admin.posts.show', $post->id) }}">Guarda post</a>
+            <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-primary mr-2 btn-sm">Modifica</a>
+        </td>
     </tr>
     @empty
     <tr>

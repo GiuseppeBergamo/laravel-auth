@@ -4,13 +4,10 @@
 
 <header>
     <h1>
-        Crea Nuovo Post
+        Modifica Post
     </h1>
 
     
 </header>
 @include('includes.admin.posts.form')
-
-
-
 @endsection

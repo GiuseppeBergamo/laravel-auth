@@ -21,7 +21,8 @@
     <div>
         <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Torna indietro</a>
     </div>
-    <div>
+    <div class="d-flex">
+        <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-primary mr-2">Modifica</a>
         <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
             @csrf
             @method('DELETE')
