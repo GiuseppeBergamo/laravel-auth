@@ -16,6 +16,7 @@
       <th scope="col">#</th>
       <th scope="col">Title</th>
       <th scope="col">Slug</th>
+      <th scope="col">Categoria</th>
       <th scope="col">Created at</th>
       <th scope="col">Modified at</th>
       <th scope="col">Actions</th>
@@ -27,6 +28,7 @@
         <th scope="row">{{ $post->id }}</th>
         <td>{{ $post->title }}</td>
         <td>In lavorazione</td>
+        <td>@if ($post->category){{ $post->category->label }}@else Nessuna @endif</td>
         <td>{{ $post->created_at }}</td>
         <td>{{ $post->updated_at }}</td>
         <td>

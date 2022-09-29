@@ -12,7 +12,7 @@
         @endif
         <p>{{ $post->content }}</p>
     </div>
-
+    <p>Categoria: @if($post->category){{ $post->category->label }} @else Nessuna @endif</p>
     <p>Creato il: {{ $post->created_at }}</p>
     <p>Modificato il: {{ $post->updated_at }}</p>
 </section>
