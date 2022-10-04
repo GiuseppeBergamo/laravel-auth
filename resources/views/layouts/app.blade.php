@@ -34,6 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <a class="nav-link @if(Route::is('admin.posts.index')) active @endif" href="{{ route('admin.posts.index') }}">Posts</a>
+                        <a href="{{ route('admin.users.index') }}" class="nav-link">Users</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
