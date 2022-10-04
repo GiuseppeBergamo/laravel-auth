@@ -13,6 +13,7 @@
         <p>{{ $post->content }}</p>
     </div>
     <p>Categoria: @if($post->category){{ $post->category->label }} @else Nessuna @endif</p>
+    <p>Autore: @if($post->user) {{ $post->user->name }} @else Anonimo @endif</p>
     <p>Creato il: {{ $post->created_at }}</p>
     <p>Modificato il: {{ $post->updated_at }}</p>
 </section>
@@ -22,6 +23,7 @@
         <a href="{{ route('admin.posts.index') }}" class="btn btn-secondary">Torna indietro</a>
     </div>
     <div class="d-flex">
+        @if($post->user_id === Auth::id())
         <a href="{{ route('admin.posts.edit', $post) }}" class="btn btn-primary mr-2">Modifica</a>
         <form action="{{ route('admin.posts.destroy', $post->id) }}" method="POST">
             @csrf
@@ -30,6 +32,7 @@
                 Elimina
             </button>
         </form>
+        @endif
     </div>
 </footer>
 
