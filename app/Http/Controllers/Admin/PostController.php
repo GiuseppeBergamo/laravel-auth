@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\Post;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,8 @@ class PostController extends Controller
     {
         $post = new Post();
         $categories = Category::all();
-        return view('admin.posts.create', compact('post', 'categories'));
+        $tags = Tag::all();
+        return view('admin.posts.create', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -50,6 +52,10 @@ class PostController extends Controller
         $post->user_id = Auth::id();
 
         $post->save();
+        if(array_key_exists('tags', $data)){
+            $post->tags()->attach($data['tags']);
+
+        }
         return redirect()->route('admin.posts.show', $post);
     }
 
@@ -77,9 +83,9 @@ class PostController extends Controller
             return view('admin.posts.index');
         }
         
-        
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.posts.edit', compact('post', 'categories'));
+        return view('admin.posts.edit', compact('post', 'categories', 'tags'));
     }
 
     /**
@@ -94,6 +100,13 @@ class PostController extends Controller
         $data = $request->all();
 
         $post->update($data);
+
+        if(array_key_exists('tags', $data)){
+            $post->tags()->sync($data['tags']);
+
+        } else {
+            $post->tags()->detach();
+        }
 
         return redirect()->route('admin.posts.show', $post);
     }

@@ -29,7 +29,7 @@
 
         </div>
         <div class="col-12">
-
+            
         
             <div class="form-group">
                 <label for="title">Testo</label>
@@ -43,6 +43,15 @@
                 <label for="image">Immagine</label>
                 <input type="text" class="form-control" id="image" name="image" value="{{ old('image', $post->image) }}">
             </div>
+        </div>
+        <div class="col-12 d-flex justify-content-around align-items-center">
+
+            @foreach($tags as $tag)
+            <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" type="checkbox" value="{{ $tag->id }}" id="tag-{{ $tag->label }}" name="tags[]">
+                <label class="form-check-label" for="tag-{{ $tag->label }}">{{ $tag->label }}</label>
+            </div>
+            @endforeach
         </div>
     </div>
 

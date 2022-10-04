@@ -16,6 +16,14 @@
     <p>Autore: @if($post->user) {{ $post->user->name }} @else Anonimo @endif</p>
     <p>Creato il: {{ $post->created_at }}</p>
     <p>Modificato il: {{ $post->updated_at }}</p>
+    <div>
+        Tags:
+        @forelse($post->tags as $tag)
+            <span class="badge" style="background-color: {{ $tag->color }}">{{ $tag->label }}</span>
+        @empty
+        Nessun tag 
+        @endforelse
+    </div>
 </section>
 
 <footer class="d-flex align-items-center justify-content-between">
